@@ -47,4 +47,12 @@ class systemscan(CommandPlugin):
             om.setHWProductKey = data[1].strip()
 	log.debug("Hardware Model=%s"   % (om.setHWProductKey))
 	
+	# Set Manufacturer
+        try:
+            from Products.DataCollector.plugins.DataMaps import MultiArgs
+            om.setHWProductKey = MultiArgs(om.setHWProductKey, 'HP')
+            om.setOSProductKey = MultiArgs(om.setOSProductKey, 'HP')
+        except:
+            pass
+
         return om
